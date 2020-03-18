@@ -2,19 +2,44 @@
   "name": "dev-health",
   "version": "0.1.0",
   "private": true,
+  "homepage": "./",
+  "main": "src/start.js",
+  "build": {
+    "appId": "some.id.ofyours",
+    "productName": "MyApp",
+    "copyright": "Copyright © 2019 ${author}",
+    "directories": {
+      "buildResources": "assets"
+    },
+    "win": {
+      "category": "your.app.category.type",
+      "iconUrl": "path-to-icon.png"
+    },
+    "mac": {
+      "category": "your.app.category.type",
+      "iconUrl": "path-to-icon.png"
+    }
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "concurrently": "^5.1.0",
+    "cross-env": "^7.0.2",
+    "electron": "^8.1.1",
+    "electron-is-dev": "^1.1.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
-    "react-scripts": "3.4.0"
+    "react-scripts": "3.4.0",
+    "wait-on": "^4.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "cross-env BROWSER=none react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "electron": "cross-env NODE_ENV=dev nodemon --exec \"\"electron .\"\"",
+    "app": "concurrently \"cross-env BROWSER=none react-scripts start\" \"wait-on http://localhost:3000 &&cross-env NODE_ENV=dev nodemon --exec \"\"electron .\"\"\""
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -30,5 +55,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "electron-builder": "^22.4.1",
+    "electron-reload": "^1.5.0",
+    "nodemon": "^2.0.2"
   }
 }
