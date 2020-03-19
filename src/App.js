@@ -14,7 +14,6 @@ export default class App extends React.Component{
     render(){
         return (
             <React.Fragment>
-
                <Sidebar />
                 <Link className="App-link" to="/check-frame">Check if you're in the webcame frame</Link>
 

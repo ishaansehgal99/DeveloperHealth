@@ -1,8 +1,21 @@
 import React from 'react';
-import './sidebar.css'
+import './sidebar.css';
+import SidebarButton from "./sidebar-button";
 
 export default class Sidebar extends React.Component{
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            xmlns: "http://www.w3.org/2000/svg",
+            links:{"home":"0 0 48 48", "search":"0 0 32 32", "map":"0 0 32 32", "planner":"0 0 32 35.6"}
+
+        };
+    }
+
     render(){
+        const {xmlns} = this.state;
+        const {links} = this.state;
         return (
             <div className="sidebar-main">
                 <svg style={{display:"none"}}>
@@ -33,35 +46,17 @@ export default class Sidebar extends React.Component{
                     </defs>
                 </svg>
 
+
                 <nav className = "nav-cont">
                     <ul className = "nav" >
-                        <li className = "nav-items " >
-                            <svg xmlns = "http://www.w3.org/2000/svg" viewBox = "0 0 48 48" >
-                                <use href = "#home" xlinkHref = "#home"> </use>
-                             </svg>
-                            <a href="">Home</a>
-                        </li>
-
-                        <li className="nav-items ">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-                                <use href="#search" xlinkHref="#search"></use>
-                            </svg>
-                            <a href="">Search</a>
-                        </li>
-
-                        <li className="nav-items ">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-                                <use href = "#map" xlinkHref = "#map"> </use>
-                            </svg>
-                            <a href="">Map</a>
-                        </li>
-
-                        <li className="nav-items ">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 35.6">
-                                <use href = "#planner" xlinkHref = "#planner"> </use>
-                            </svg>
-                            <a href="">Planner</a>
-                        </li>
+                        {
+                            Object.keys(links).map(function(key, index) {
+                                console.log(key, links[key]);
+                                return (
+                                    <SidebarButton href={key} viewBox={links[key]} xmlns = {xmlns} key={index}/>
+                                );
+                            })
+                        }
                     </ul>
                 </nav>
 
@@ -79,5 +74,31 @@ export default class Sidebar extends React.Component{
 
 }
 
-
+// <li className = "nav-items ">
+//     <svg xmlns = "http://www.w3.org/2000/svg" viewBox = "0 0 48 48" >
+//         <use href = "#home" xlinkHref = "#home"> </use>
+//     </svg>
+//     <a href="">Home</a>
+// </li>
+//
+// <li className="nav-items ">
+//     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+//     <use href="#search" xlinkHref="#search"></use>
+// </svg>
+// <a href="">Search</a>
+// </li>
+//
+// <li className="nav-items ">
+// <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+// <use href = "#map" xlinkHref = "#map"> </use>
+// </svg>
+// <a href="">Map</a>
+// </li>
+//
+// <li className="nav-items ">
+// <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 35.6">
+// <use href = "#planner" xlinkHref = "#planner"> </use>
+// </svg>
+// <a href="">Planner</a>
+// </li>
 
