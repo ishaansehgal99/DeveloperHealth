@@ -11,6 +11,6 @@ const About = () => {
             <img className="about-img" width="275" src={Logo} alt=""/>
         </div>
     )
-}
+};
 
-export default About
+export default About;
