@@ -16,7 +16,7 @@
     "acorn": "^7.1.1",
     "cross-env": "^6.0.3",
     "electron-is-dev": "^1.1.0",
-    "minimist": "^1.2.5",
+    "minimist": "^1.2.6",
     "node-sass": "^4.13.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
